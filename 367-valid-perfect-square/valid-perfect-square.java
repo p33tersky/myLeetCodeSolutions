@@ -1,6 +1,6 @@
 class Solution {
     public boolean isPerfectSquare(int num) {
-         for(int i = 0; i<=num/100000+100000; i++){
+         for(int i = 0; i<=num/500000+500000; i++){
              if (i*i==num){
                  return true;
              }
