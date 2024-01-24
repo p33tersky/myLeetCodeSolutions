@@ -1,8 +1,6 @@
 class Solution {
-     public  int bestClosingTime(String customers) {
-        int[] penalties = new int[customers.length()+1];
+     public static int bestClosingTime(String customers) {
         int penalty = customers.replaceAll("N","").length();
-        penalties[customers.length()] = penalty;
         int min = penalty;
         int index = 0;
         for (int i = customers.length()-1; i >=0 ; i--) {
@@ -16,7 +14,6 @@ class Solution {
             } else if (sign.equals("N")){
                 penalty++;
             }
-            penalties[i] = penalty;
         }
         return index;
     }
