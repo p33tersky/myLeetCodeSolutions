@@ -11,10 +11,8 @@ class Solution(object):
         if maxStock == minStock:
             return 0
     
-        while len(subPrices) > 0:
+        while len(subPrices) > 0 and maxStock != globalmin:
             maxStock = subPrices[::-1][0] 
-            if(maxStock == globalmin):
-                break
             minStock = min(subPrices)
             profit = maxStock - minStock
             if profit > maxProfit:
