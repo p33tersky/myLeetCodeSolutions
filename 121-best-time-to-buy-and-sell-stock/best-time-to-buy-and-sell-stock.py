@@ -22,8 +22,7 @@ class Solution(object):
             startIndex += len(subPrices)
             if(startIndex >= len(prices)):
                 break
-            newEnd = prices[startIndex::].index(max(prices[startIndex::]))
-        
-            subPrices = prices[startIndex:startIndex+newEnd+1]
+            endIndex = prices[startIndex::].index(max(prices[startIndex::]))
+            subPrices = prices[startIndex:startIndex+endIndex+1]
             
         return maxProfit
