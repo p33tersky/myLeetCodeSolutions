@@ -20,6 +20,8 @@ class Solution(object):
             if profit > maxProfit:
                 maxProfit = profit
             startIndex += len(subPrices)
+            while startIndex + 1 <len(prices) and prices[startIndex+1] < prices[startIndex]  :
+                startIndex +=1
             if(startIndex >= len(prices)):
                 break
             endIndex = prices[startIndex::].index(max(prices[startIndex::]))
