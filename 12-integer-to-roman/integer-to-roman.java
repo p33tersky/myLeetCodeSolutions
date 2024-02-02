@@ -1,10 +1,9 @@
 class Solution {
     public String intToRoman(int num) {
-         StringBuilder sb = new StringBuilder();
-        int thousands = num / 1000;
-        for (int i = 0; i < thousands; i++) {
+        StringBuilder sb = new StringBuilder();
+        while (num>999){
             sb.append("M");
-            num -= 1000;
+            num -=1000;
         }
         if (num > 899) {
             sb.append("CM");
@@ -18,10 +17,9 @@ class Solution {
             sb.append("CD");
             num -= 400;
         }
-        int hundreds = num / 100;
-        for (int i = 0; i < hundreds; i++) {
+        while (num>99){
             sb.append("C");
-            num -= 100;
+            num -=100;
         }
         if (num > 89) {
             sb.append("XC");
@@ -35,10 +33,9 @@ class Solution {
             sb.append("XL");
             num -= 40;
         }
-        int tens = num / 10;
-        for (int i = 0; i < tens; i++) {
+        while (num>9){
             sb.append("X");
-            num -= 10;
+            num -=10;
         }
         if (num == 9) {
             sb.append("IX");
