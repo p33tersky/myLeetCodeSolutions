@@ -1,16 +1,12 @@
 class Solution {
     public int numSquares(int n) {
-        int sqrtNum = 0;
-        int k = 0;
+        int k = 1;
+        int m = 0;
         List<Integer> squares = new ArrayList<>();
-        for (int i = 0; i < n+1; i++) {
-            if (i == sqrtNum) {
-                sqrtNum = i + 2 * k + 1;
-                k++;
-                if (i!=0){
-                    squares.add(i);
-                }
-            }
+        while (k < n+1){
+            squares.add(k);
+            m++;
+            k +=2*m +1;
         }
         if (squares.size()*squares.size() == n) {
             return 1;
