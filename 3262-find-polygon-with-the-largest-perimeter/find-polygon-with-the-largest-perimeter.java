@@ -5,7 +5,7 @@ class Solution {
         for (int i = 0; i < nums.length; i++) {
             perimeter += nums[i];
         }
-        for (int i = nums.length - 1; i > -1; i--) {
+        for (int i = nums.length - 1; i > 1; i--) {
             int ak = nums[i];
             if (perimeter - 2L * ak > 0) {
                 return perimeter;
