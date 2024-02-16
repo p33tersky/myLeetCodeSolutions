@@ -17,23 +17,15 @@ class Solution {
                 occurrencesToList.put(value, ints);
             }
         }
-        Set<Integer> keys = occurrencesToList.keySet();
-        for (int key : keys) {
-            List<Integer> occurrences = occurrencesToList.get(key);
-            Collections.sort(occurrences);
-            int size = occurrences.size();
-            int elementsToRemove = Math.min(size, k);
-            occurrences.subList(0, elementsToRemove).clear();
-            k -= elementsToRemove;
-
-            if (k == 0) {
-                break;
-            }
+        Queue<Integer> occs = new LinkedList<>();
+        for (int key : occurrencesToList.keySet()){
+            Collections.sort(occurrencesToList.get(key));
+            occs.addAll(occurrencesToList.get(key));
         }
-        Set<Integer> finalSet = new HashSet<>();
-        for (int key : occurrencesToList.keySet()) {
-            finalSet.addAll(occurrencesToList.get(key));
+        for (int i = 0; i < k; i++) {
+            occs.poll();
         }
+        Set<Integer> finalSet = new HashSet<>(occs);
         return finalSet.size();
     }
 }
