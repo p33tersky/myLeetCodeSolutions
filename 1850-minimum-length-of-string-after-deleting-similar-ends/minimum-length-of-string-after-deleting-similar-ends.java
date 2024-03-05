@@ -1,22 +1,21 @@
 class Solution {
     public int minimumLength(String s) {
-        LinkedList<Character> signs = new LinkedList<>();
-        for (char c : s.toCharArray()) {
-            signs.add(c);
+         char[] signs = s.toCharArray();
+        int l = s.length();
+        int i = 0;
+        int j = l-1;
+        while (j>i){
+            if (signs[i] != signs[j]){
+                break;
+            }
+            char c = signs[i];
+            while ( j>= i && signs[i] == c){
+                i++;
+            }
+            while (j >= i && signs[j] == c){
+                j--;
+            }
         }
-        while (!signs.isEmpty() && signs.getFirst() == signs.getLast()) {
-            char sign = signs.getFirst();
-            if (signs.size() == 1) {
-                return 1;
-            }
-            while (!signs.isEmpty() && signs.getFirst() == sign) {
-                signs.removeFirst();
-            }
-            while (!signs.isEmpty() && sign == signs.getLast()) {
-                signs.removeLast();
-            }
-        }
-
-        return signs.size();
+        return 1+j-i;
     }
 }
