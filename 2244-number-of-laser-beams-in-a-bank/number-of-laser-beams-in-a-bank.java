@@ -1,14 +1,21 @@
 class Solution {
     public int numberOfBeams(String[] bank) {
-        int lastNumOfLasers = bank[0].replaceAll("0", "").length();
+        int[] numOfLasers = new int[bank.length];
+        for (int i = 0; i < bank.length; i++) {
+            for (int j = 0; j < bank[i].length(); j++) {
+                if (bank[i].charAt(j) == '1') {
+                    numOfLasers[i]++;
+                }
+            }
+        }
         int result = 0;
-        for (int i = 1; i < bank.length; i++) {
-            int lasersNum = bank[i].replaceAll("0", "").length();
-            if (lasersNum == 0) {
+        int last = numOfLasers[0];
+        for (int i = 1; i < numOfLasers.length; i++) {
+            if (numOfLasers[i] == 0){
                 continue;
             }
-            result += lastNumOfLasers * lasersNum;
-            lastNumOfLasers = lasersNum;
+            result += last * numOfLasers[i];
+            last = numOfLasers[i];
         }
         return result;
     }
